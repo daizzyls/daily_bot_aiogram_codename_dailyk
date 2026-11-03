@@ -1,0 +1,8 @@
+strTOK.py
+__pycache__/
+pipka/
+venv/
+*__/
+other/
+set.py
+datebase.py
