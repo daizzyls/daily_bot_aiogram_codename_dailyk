@@ -3,7 +3,8 @@ from datetime import datetime
 
 from aiogram import Router
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import InlineKeyboardButton, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from configur import ADMIN as AD
 from datebase import datebase as dt
@@ -67,11 +68,20 @@ async def write_dates(message: Message):
     else:
         person_info = f"<b>Имя:</b> {name}"
 
+    builder = InlineKeyboardBuilder()
+    builder.add(InlineKeyboardButton(
+        text='remove' , 
+        callback_data=f"/remove {name} {surname} {parsed_date}")
+    )
+
+
+
     await message.answer(
-        f"Успешно добавлено!\n"
+        "Успешно добавлено!\n"
         f"{person_info}\n"
-        f"<b>Дата рождения:</b> {str_date}-{str_year}",
+        f"<b>Дата рождения:</b> {str_date}-{str_year}\n",
+        reply_markup=builder.as_markup(),
         parse_mode="HTML"
     )
-    
 
+    

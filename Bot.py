@@ -34,14 +34,14 @@ congrat = congratulations
 today_congratulated = congratulated_today
 
 # =========================Keyboard========================= #
-async def set_main_commands(bot : Bot):
-    main_commands = [
-        BotCommand(command='start' , description='Restart bot and send greeting message'),
-        BotCommand(command='date' , description='<name> <surname> <data> - Set name, surname and date of birth in the database'),
-        BotCommand(command='gift' , description='<descr> - Write your own congratulation'),
-        BotCommand(command='info' , description='Show information, that you set in bot (by your status(Admin and...)'),
-    ]
-    await bot.set_my_commands(main_commands)
+# async def set_main_commands(bot : Bot):
+#     main_commands = [
+#         BotCommand(command='start' , description='Restart bot and send greeting message'),
+#         BotCommand(command='date' , description='<name> <surname> <data> - Set name, surname and date of birth in the database'),
+#         BotCommand(command='gift' , description='<descr> - Write your own congratulation'),
+#         BotCommand(command='info' , description='Show information, that you set in bot (by your status(Admin and...)'),
+#     ]
+#     await bot.set_my_commands(main_commands)
 
 # =========================FUNCTIONS========================= #
 @dp.message(CommandStart())
@@ -68,9 +68,6 @@ async def strart_instruction(message: Message):
         parse_mode="HTML"
     )
 
-
-
-
 # =========================LAUNCH========================= #
 async def main():
     asyncio.create_task(daily_date(bot))
@@ -82,9 +79,8 @@ async def main():
     await bot.delete_webhook(drop_pending_updates=True)
 
     #Launch Main commands to list in tg
-    await set_main_commands(bot)
+    # await set_main_commands(bot)
     
-    # 3. Чистый запуск поллинга
     await dp.start_polling(bot)
 
 
