@@ -1,4 +1,4 @@
-# Datee.py
+
 from datetime import datetime
 
 from aiogram import Router
@@ -7,8 +7,6 @@ from aiogram.types import Message
 
 from configur import ADMIN as AD
 from datebase import datebase as dt
-
-# ИМПОРТИРУЕМ ИЗ saver, А НЕ ИЗ BirthBot!
 from saver import async_save_date
 
 database = dt

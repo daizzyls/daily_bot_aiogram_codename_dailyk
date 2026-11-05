@@ -37,10 +37,9 @@ today_congratulated = congratulated_today
 async def set_main_commands(bot : Bot):
     main_commands = [
         BotCommand(command='start' , description='Restart bot and send greeting message'),
-        BotCommand(command='date' , description='Set name, surname and date of birth in the database'),
-        BotCommand(command='gift' , description='Write your own congratulation'),
+        BotCommand(command='date' , description='<name> <surname> <data> - Set name, surname and date of birth in the database'),
+        BotCommand(command='gift' , description='<descr> - Write your own congratulation'),
         BotCommand(command='info' , description='Show information, that you set in bot (by your status(Admin and...)'),
-        BotCommand(command='remove' , description='Delete member from database'),
     ]
     await bot.set_my_commands(main_commands)
 
@@ -58,16 +57,15 @@ async def strart_instruction(message: Message):
              
              "<code>/gift</code> - <b>add your congratulation in the database</b>\n"
              "<blockquote><b>Example: <i>/gift your_text</i></b></blockquote>\n"
-             "<b>If you need to enter name in text , write like this:<code>{name}</code></b>\n"
+             "If you need to enter name in text , write like this:<code>{name}</code>\n"
              "<blockquote><b>Example: <i>/gift Поздравляю тебя {name}!</i></b></blockquote>\n\n"
 
-            "<code>/remove</code> - <b>delete member from the database</b>/n"
-            "<blockquote><b>Example: <i>/remove name DD-MM-YYYY</i></b></blockqoute>/n"
-            "<code><i><b>/remove Ivan 11-09-2001</b></i></blockqoute>/n/n"
+             "<code>/remove</code> - <b>delete member from the database</b>\n"
+             "<blockquote><b>Example: <i>/remove name DD-MM-YYYY</i></b></blockquote>\n"
+             "<blockquote><i><b>/remove Ivan 11-09-2001</b></i></blockquote>\n\n"
              
              "<code>/info</code> - <b>send database in this chat</b>",
         parse_mode="HTML"
-        
     )
 
 

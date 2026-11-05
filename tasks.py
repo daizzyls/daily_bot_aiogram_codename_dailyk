@@ -10,7 +10,6 @@ from datebase import datebase as database
 from today import congratulated_today as today_congratulated
 
 
-# 1. Добавляем параметр bot: Bot в аргументы функции
 async def daily_date(bot: Bot):
     while True:
         tz_moscow = ZoneInfo("Europe/Moscow")
@@ -25,7 +24,7 @@ async def daily_date(bot: Bot):
                 
                 if current_date == date and full_name not in today_congratulated:
                     how_many_years = int(current_year) - int(year)
-                    template = random.choice(congrat) + f"\nХОУ ХОУ ХОУ! \nТебе исполнилось: {how_many_years}"
+                    template = random.choice(congrat) + f"\n\nПоздравляю! \nТебе исполнилось: {how_many_years}"
                     
                     try:
                         congratulation_text = template.format(name=full_name) 
@@ -42,7 +41,7 @@ async def daily_date(bot: Bot):
                     except Exception as e:
                         print(f"Ошибка отправки в чат {chat_idd}: {e}")
                         
-        # Проверяем раз в 1 час (3600 сек) вместо 60 сек, чтобы снизить нагрузку
+        # Проверяем раз в 1 час (3600 сек) вместо 60 сек
         await asyncio.sleep(3600)
 
 
