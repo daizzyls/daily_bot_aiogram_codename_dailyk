@@ -71,7 +71,7 @@ async def write_dates(message: Message):
     builder = InlineKeyboardBuilder()
     builder.add(InlineKeyboardButton(
         text='remove' , 
-        callback_data=f"/remove {name} {surname} {parsed_date}")
+        callback_data="/remove")
     )
 
 

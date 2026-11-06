@@ -5,14 +5,16 @@ from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.types import BotCommand, Message
 
+#routers
 from congratulations import congratulations
 from datebase import datebase
 from Datee import router as date_router
 from Gift import router as gift_router
 from Info import router as info_router
+from Remove import router as remove_router
 from strTOK import BOT_TOKEN
 
-# 1. Импортируем фоновые задачи из вашего файла tasks.py
+#tasks
 from tasks import clear_daily_list, daily_date
 from today import congratulated_today
 
@@ -23,7 +25,8 @@ ADMIN = '1054191711'
 bot = Bot(token=TELEGRAM_TOKEN)
 dp = Dispatcher()
 
-# Регистрация роутеров
+
+dp.include_router(remove_router)
 dp.include_router(date_router)
 dp.include_router(info_router)
 dp.include_router(gift_router)
