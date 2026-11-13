@@ -3,20 +3,26 @@ import asyncio
 
 from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
-from aiogram.types import BotCommand, Message
+from aiogram.types import Message
 
 #routers
-from congratulations import congratulations
-from datebase import datebase
 from Datee import router as date_router
 from Gift import router as gift_router
 from Info import router as info_router
 from Remove import router as remove_router
-from strTOK import BOT_TOKEN
+from myid import router as telegram_info_router
+
 
 #tasks
 from tasks import clear_daily_list, daily_date
 from today import congratulated_today
+from congratulations import congratulations
+from datebase import datebase
+
+
+#keyboard&TOKEN
+from myid import keyboard
+from strTOK import BOT_TOKEN
 
 # =========================SETTINGS========================= #
 TELEGRAM_TOKEN = BOT_TOKEN
@@ -24,12 +30,14 @@ ADMIN = '1054191711'
 
 bot = Bot(token=TELEGRAM_TOKEN)
 dp = Dispatcher()
+Private_Keyboard = keyboard
 
 
 dp.include_router(remove_router)
 dp.include_router(date_router)
 dp.include_router(info_router)
 dp.include_router(gift_router)
+dp.include_router(telegram_info_router)
 
 # =========================DataBase========================= #
 database = datebase
@@ -37,14 +45,6 @@ congrat = congratulations
 today_congratulated = congratulated_today
 
 # =========================Keyboard========================= #
-# async def set_main_commands(bot : Bot):
-#     main_commands = [
-#         BotCommand(command='start' , description='Restart bot and send greeting message'),
-#         BotCommand(command='date' , description='<name> <surname> <data> - Set name, surname and date of birth in the database'),
-#         BotCommand(command='gift' , description='<descr> - Write your own congratulation'),
-#         BotCommand(command='info' , description='Show information, that you set in bot (by your status(Admin and...)'),
-#     ]
-#     await bot.set_my_commands(main_commands)
 
 # =========================FUNCTIONS========================= #
 @dp.message(CommandStart())
